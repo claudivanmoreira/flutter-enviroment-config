@@ -53,8 +53,8 @@ flutter doctor
 ## 3. Intall Android SDK Manager
 
 1. Clique [here](https://developer.android.com/studio) and scroll to section "Command line tools only" and download the linux version
-2. Create folder _/home/<your-usernmae>/Documents/DevZone/Tools/android-sdk_ 
-3. Extract folder in downloaded .zip, rename folder cmdline-tools to _adnroid-sdk_ and copy to _/home/<your-usernmae>/Documents/DevZone/Tools_
+2. Create folder _/home/your-usernmae/Documents/DevZone/Tools/android-sdk_ 
+3. Extract folder in downloaded .zip, rename folder cmdline-tools to _adnroid-sdk_ and copy to _/home/your-usernmae/Documents/DevZone/Tools_
 4. Setup enviroment variables to get access to sdkmanager CLI from terminal: 
   
 ```javascript
