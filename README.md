@@ -3,9 +3,11 @@
 </p>
 <br>
 <br>
-<h1 align="center">Enviroment configuration to Flutter Development</h1>
+<h1 align="center">Enviroment configuration for Flutter Development</h1>
 <br>
 <br>
+
+
 #### 1. Intall Java Development Kit and Java Runtime Enviroment
 
 1.1. Validate that you have Java installed in your machine. 
