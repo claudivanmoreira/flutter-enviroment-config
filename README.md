@@ -1,24 +1,46 @@
-# flutter-enviroment-config (Ubuntu Edition)
+<p align="center">
+  <img width="500" src="https://flutter.dev/assets/flutter-lockup-1caf6476beed76adec3c477586da54de6b552b2f42108ec5bc68dc63bae2df75.png" alt="Sublime's custom image"/>
+</p>
+<br>
+<br>
+<h1 align="center">Enviroment configuration to Flutter Development</h1>
+<br>
+<br>
+#### 1. Intall Java Development Kit and Java Runtime Enviroment
 
-## 1. Intall Java Development Kit and Java Runtime Enviroment
+1.1. Validate that you have Java installed in your machine. 
 
 ```javascript
+
+javac --version
+
+java --version
+
+```
+
+1.2. If the above commands return error, then install Java
+
+
+```javascript
+
 sudo apt-get install openjdk-11-jre
-```
 
-```javascript
 sudo apt-get install openjdk-11-jdk
+
 ```
 
-- Validate your instalation:
+1.3. Validate your instalations:
 
 ```javascript
+
 javac --version
 
 javac 11.0.9.1
+
 ```
 
 ```javascript
+
 java --version
 
 openjdk 11.0.9.1 2020-11-04
@@ -26,10 +48,22 @@ OpenJDK Runtime Environment (build 11.0.9.1+1-Ubuntu-0ubuntu1.18.04)
 OpenJDK 64-Bit Server VM (build 11.0.9.1+1-Ubuntu-0ubuntu1.18.04, mixed mode, sharing)
 ```
 
-## 2. Intall Flutter SDK
+#### 2. Install KVM and Setup permissions
 
 ```javascript
+
+sudo apt install qemu-kvm
+sudo adduser $USER kvm
+sudo setfacl -m u:$USER:rwx /dev/kvm
+
+```
+
+#### 3. Intall Flutter SDK
+
+```javascript
+
 sudo snap install flutter --classic
+
 ```
 - Validate instalation
 
@@ -51,13 +85,14 @@ flutter doctor
 ```
 :rotating_light: The above command reports that the Android SDK installation was not found. Let's install it now.
 
-## 3. Intall Android SDK Manager
 
-1. Clique [here](https://developer.android.com/studio) and scroll to section "Command line tools only" and download the linux version
-2. Create folder _/home/your-usernmae/Documents/DevZone/Tools/android-sdk_ 
-3. Extract folder in downloaded .zip, and copy your content to directory _/home/your-usernmae/Documents/DevZone/Tools/android-sdk/cmdline-tools/latest
-4. Setup enviroment variables to get access to sdkmanager CLI from terminal: 
-  
+#### 4. Intall and Setup Android SDK
+
+4.1. Clique [here](https://developer.android.com/studio) and scroll to section "Command line tools only" and download the linux version
+4.2. Create folder to extract files _mkdir -p ~/Documentos/DevZone/Tools/android/sdk/cmdline-tools/latest_
+4.3. Extract files from commandlinetools-linux-6858069_latest.zip/cmdline-tools to new directory
+4.4. Setup enviroment variables to get access to sdkmanager CLI from terminal:
+
 ```javascript
 sudo gedit /etc/profile
 ```
@@ -65,118 +100,86 @@ sudo gedit /etc/profile
 and add the following content at end of file:
 
 ```javascript
-export ANDROID_SDK_ROOT=/home/claudivan-moreira/Documenscrcpytos/DevZone/Tools/android-sdk
-export ANDROID_HOME=/home/claudivan-moreira/Documentos/DevZone/Tools/android-sdk/cmdline-tools/latest
-export PATH=$PATH:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$ANDROID_SDK_ROOT/cmdline-tools/tools/bin:$ANDROID_SDK_ROOT/build-tools:$ANDROID_SDK_ROOT/emulator:$ANDROID_SDK_ROOT/platform-tools
+
+export ANDROID_SDK_ROOT=~/Documentos/DevZone/Tools/android/sdk/
+export ANDROID_HOME=~/Documentos/DevZone/Tools/android/sdk
+export PATH=$PATH:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$ANDROID_SDK_ROOT/tools/bin:$ANDROID_SDK_ROOT/build-tools:$ANDROID_SDK_ROOT/emulator:$ANDROID_SDK_ROOT/platform-tools
+
 ```
 
-List available packages with sdkmanager to validate your configuration:
+4.5. Restart your machine or logout
+4.6. Open terminal and download SDK packages (image and build tools) for Android Nogaut (7.1.1) using command below:
 
 ```javascript
-sdkmanager --list
 
-Available Packages:
-  Path                                                                                     | Version      | Description                                           
-  -------                                                                                  | -------      | -------                                               
-  add-ons;addon-google_apis-google-15                                                      | 3            | Google APIs                                           
-  add-ons;addon-google_apis-google-16                                                      | 4            | Google APIs                                          
-  add-ons;addon-google_apis-google-17                                                      | 4            | Google APIs                                           
-  add-ons;addon-google_apis-google-18                                                      | 4            | Google APIs                                           
-  add-ons;addon-google_apis-google-19                                                      | 20           | Google APIs                                           
-  add-ons;addon-google_apis-google-21                                                      | 1            | Google APIs                                           
-  add-ons;addon-google_apis-google-22                                                      | 1            | Google APIs                                           
-  add-ons;addon-google_apis-google-23                                                      | 1            | Google APIs                                           
-  add-ons;addon-google_apis-google-24                                                      | 1            | Google APIs 
-  .....
+sdkmanager "platforms;android-25" "system-images;android-25;google_apis;x86_64" "build-tools;25.0.3"
+
 ```
 
-5. Install the tools to build and run android emulator. Using command "_sdkmanager --list_" you can get packages names to install. In my case, i installed latest version of build-tools and Android API 28/29 (Android 9/10). You can get the API level for android versions [here](https://developer.android.com/studio/releases/platforms)
+4.7. Create your Android Virtual Device
 
-```javascript
-sdkmanager "build-tools;28.0.3" "platforms;android-28" "platforms;android-29"
-```
+avdmanager create avd -n <device name> -k <image id or name>
 
-
-## 4. Set Android SDK home to Flutter and Accept licenses
-
-
-```javascript
-flutter config --android-sdk /home/claudivan-moreira/Documentos/DevZone/Tools/android-sdk
-
-flutter doctor --android-licenses
-```
-Restart your machine and revalidate your Flutter instalation:
-
-```javascript
-flutter doctor
-
-[✓] Flutter (Channel stable, 1.22.5, on Linux, locale pt_BR.UTF-8)
-[✓] Android toolchain - develop for Android devices (Android SDK version 28.0.3)
-[!] Android Studio (not installed)
-[!] Connected device
-```
-
-## 5. Setup KVM permissions
-
-```javascript
-sudo apt install qemu-kvm
-sudo adduser $USER kvm
-sudo setfacl -m u:$USER:rwx /dev/kvm
-```
-
-## 6. Creating Emulator and Running your Virtual Device
-
-First, download your specific image for Android Virtual Devices. In my case, i will use the Android 10
-
-```javascript
-./sdkmanager "system-images;android-29;google_apis;x86"
-```
-
-And then, create your Virtual Device with command bellow:
-
-```javascript
-avdmanager create avd -n <device name> -k <image name>
-```
 Example:
 
 ```javascript
-avdmanager create avd -n android10 -k "system-images;android-29;google_apis;x86"
+
+avdmanager create avd -n MOTOE_NOUGAT -k "system-images;android-25;google_apis;x86_64"
+
 ```
 
-Start your emulator:
+4.8. Now, exeute your virtual device:
 
 ```javascript
-emulator @android10
+
+emulator @MOTOE_NOUGAT
+
 ```
 
-## 7. Intall VSCode Editor
+To list all available images you can run the command _sdkmanager --list_ and download using step 6
+To list all available virtual devices you can run the command _avdmanager list avd_ and executing using step 8
+To delete a virtual device you can run the command _avdmanager delete avd -n <avd name> (Ex: MOTOE_NOUGAT)_ and executing using step 8
+
+#### 5. Intall VSCode Editor
 
 Clique [here](https://code.visualstudio.com/download), download and install linux version or by Ubuntu Store
 
-## 8. Improve your VSCode Editor with extensions
+#### 6. Improve your VSCode Editor with extensions
 
-- Flutter (Install full support for Flutter including Dart sintaxe highligth, autocomplete and execution)
-- Flutter Tree (Similar to emmet)
-- Awesome Flutter Snippets (Code snippets for Flutter)
-- Dracula Official (Theme)
-- GitLens (Git integration)
+- Flutter (Required)
+- Flutter Tree (Optional)
+- Awesome Flutter Snippets (Optional)
+- Dracula Official (Optional)
+- GitLens (Optional)
 
-## 9. Create your Flutter Project
+#### 9. Create your Flutter Project
 
 
 ```javascript
+
 flutter create hello-world
+
 ```
 
-## 10. Configure your phisical phone (Optional)
+#### 10. Run project on Emulator
+
+10.1. Open project created on step 9 in VSCode
+10.2. Start emulator using step 4.8
+10.3. In VSCode, select device to run your project
+
+If your VSCode not recognize the device, restart VSCode
+
+
+#### 11. Configure your phisical phone (Optional)
 
 You can run your flutter project directly on your physical phone as you develop.
 
 To do this, enable developer mode and USB debugging. Then connect your cell phone with USB cable to your computer.
 
-Validate that your device is accessible via the CLI of the flutter by running the command below on the terminal:
+11.1. Validate that your device is accessible via the CLI of the flutter by running the command below on the terminal:
 
 ```bash
+
 flutter devices
 
 No devices detected.
@@ -190,20 +193,22 @@ https://flutter.dev/setup/ for troubleshooting tips.
 _You might need to check your device for an authorization dialog._
 ```
 
-:rotating_light: In first time that you execute this command, an popup will be displayed in your phone. Confirm de option and re-execute the command:
+11.2. In first time, when above command executed, an popup will be displayed in your phone. Confirm de option and re-execute the command:
 
 ```bash
+
 flutter devices
 
 1 connected device:
 
 Moto E 4 (mobile) • 0041072637 • android-arm • Android 7.1.1 (API 25)
+
 ```
 
+11.3. In VSCode, select device to run your project 
 
 
-
-## 11. Scrspy (Optional)
+#### 12. Scrspy (Optional)
 
 This application provides display and control of Android devices connected on USB (or over TCP/IP). It does not 
 require any root access. It works on GNU/Linux, Windows and macOS.
@@ -211,45 +216,15 @@ require any root access. It works on GNU/Linux, Windows and macOS.
 Install:
 
 ```bash
+
 apt install scrcpy
+
 ```
 
 Connect your phone with USB cable and execute
 
 ```bash
+
 scrcpy
+
 ```
-
-Click [here](https://github.com/Genymobile/scrcpy) for more info.
-
-
-## 12. Tips and Solutions
-
-1) When i started my Virtual Decive on step 6, the buttons home, back and window manager doen't works correctly. 
-So, I removed and created a new virtual device exactly the same.
-
-```bash
-emulator -list-avds
-
-android10
-```
-
-and then
-
-```bash
-avdmanager delete avd -n android10
-
-Deleting file /home/my-username/.android/avd/android10.ini
-Deleting folder /home/my-username/.android/avd/android10.avd
-
-AVD 'android10' deleted.
-```
-
-```javascript
-avdmanager create avd -n android10 -k "system-images;android-29;google_apis;x86"
-```
-```javascript
-emulator @android10
-```
-
-
