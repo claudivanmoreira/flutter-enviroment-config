@@ -50,7 +50,7 @@ flutter doctor
     ! No devices available
 ```
 
-## 3. Intall Adnroid SDK Manager
+## 3. Intall Android SDK Manager
 
 1. Clique [here](https://developer.android.com/studio) and scroll to section "Command line tools only" and download the linux version
 2. Create folder /home/<your-usernmae>/Documents/DevZone/Tools/android-sdk 
