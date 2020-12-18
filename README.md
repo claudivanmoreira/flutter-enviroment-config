@@ -49,12 +49,13 @@ flutter doctor
 [!] Connected device
     ! No devices available
 ```
+:rotating_light: The above command reports that the Android SDK installation was not found. Let's install it now.
 
 ## 3. Intall Android SDK Manager
 
 1. Clique [here](https://developer.android.com/studio) and scroll to section "Command line tools only" and download the linux version
 2. Create folder _/home/your-usernmae/Documents/DevZone/Tools/android-sdk_ 
-3. Extract folder in downloaded .zip, rename folder cmdline-tools to _adnroid-sdk_ and copy to _/home/your-usernmae/Documents/DevZone/Tools_
+3. Extract folder in downloaded .zip, and copy your content to directory _/home/your-usernmae/Documents/DevZone/Tools/android-sdk/cmdline-tools/latest
 4. Setup enviroment variables to get access to sdkmanager CLI from terminal: 
   
 ```javascript
@@ -64,15 +65,48 @@ sudo gedit /etc/profile
 and add the following content at end of file:
 
 ```javascript
-export ANDROID_SDK_ROOT=/home/claudivan-moreira/Documentos/DevZone/Tools/android-sdk/
-export ANDROID_HOME=/home/claudivan-moreira/Documentos/DevZone/Tools/android-sdk/
-export PATH=$PATH:$HOME/bin:$ANDROID_SDK_ROOT:$ANDROID_SDK_ROOT/emulator:$ANDROID_SDK_ROOT/platform-tools:$ANDROID_SDK_ROOT/bin:$ANDROID_HOME
+export ANDROID_SDK_ROOT=/home/claudivan-moreira/Documentos/DevZone/Tools/android-sdk
+export ANDROID_HOME=/home/claudivan-moreira/Documentos/DevZone/Tools/android-sdk/cmdline-tools/latest
+export PATH=$PATH:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$ANDROID_SDK_ROOT/cmdline-tools/tools/bin:$ANDROID_SDK_ROOT/build-tools:$ANDROID_SDK_ROOT/emulator:$ANDROID_SDK_ROOT/platform-tools
 ```
 
-validate your configuration:
+List available packages with sdkmanager to validate your configuration:
 
 ```javascript
 sdkmanager --list
+
+Available Packages:
+  Path                                                                                     | Version      | Description                                           
+  -------                                                                                  | -------      | -------                                               
+  add-ons;addon-google_apis-google-15                                                      | 3            | Google APIs                                           
+  add-ons;addon-google_apis-google-16                                                      | 4            | Google APIs                                          
+  add-ons;addon-google_apis-google-17                                                      | 4            | Google APIs                                           
+  add-ons;addon-google_apis-google-18                                                      | 4            | Google APIs                                           
+  add-ons;addon-google_apis-google-19                                                      | 20           | Google APIs                                           
+  add-ons;addon-google_apis-google-21                                                      | 1            | Google APIs                                           
+  add-ons;addon-google_apis-google-22                                                      | 1            | Google APIs                                           
+  add-ons;addon-google_apis-google-23                                                      | 1            | Google APIs                                           
+  add-ons;addon-google_apis-google-24                                                      | 1            | Google APIs 
+  .....
+```
+
+5. Install the tools to build and run android emulator. Using command "_sdkmanager --list_" you can get packages names to install. In my case, i installed latest version of build-tools and Android API 28 (Android 9). You can get the API level for android versions [here](https://developer.android.com/studio/releases/platforms)
+
+```javascript
+sdkmanager "build-tools;28.0.3" "platforms;android-28"
+```
+
+## 4. Set Android SDK home to Flutter
+
+```javascript
+flutter config --android-sdk /home/claudivan-moreira/Documentos/DevZone/Tools/android-sdk
+```
+Restart your machine and revalidate your Flutter instalation:
+
+```javascript
+flutter doctor
+
+
 ```
 
 ## 4. Intall VSCode Editor
