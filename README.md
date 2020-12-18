@@ -63,9 +63,11 @@ sudo gedit /etc/profile
 
 and add the following content at end of file:
 
+```javascript
 export ANDROID_SDK_ROOT=/home/claudivan-moreira/Documentos/DevZone/Tools/android-sdk/
 export ANDROID_HOME=/home/claudivan-moreira/Documentos/DevZone/Tools/android-sdk/
 export PATH=$PATH:$HOME/bin:$ANDROID_SDK_ROOT:$ANDROID_SDK_ROOT/emulator:$ANDROID_SDK_ROOT/platform-tools:$ANDROID_SDK_ROOT/bin:$ANDROID_HOME
+```
 
 validate your configuration:
 
