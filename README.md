@@ -65,7 +65,7 @@ sudo gedit /etc/profile
 and add the following content at end of file:
 
 ```javascript
-export ANDROID_SDK_ROOT=/home/claudivan-moreira/Documentos/DevZone/Tools/android-sdk
+export ANDROID_SDK_ROOT=/home/claudivan-moreira/Documenscrcpytos/DevZone/Tools/android-sdk
 export ANDROID_HOME=/home/claudivan-moreira/Documentos/DevZone/Tools/android-sdk/cmdline-tools/latest
 export PATH=$PATH:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$ANDROID_SDK_ROOT/cmdline-tools/tools/bin:$ANDROID_SDK_ROOT/build-tools:$ANDROID_SDK_ROOT/emulator:$ANDROID_SDK_ROOT/platform-tools
 ```
@@ -205,9 +205,15 @@ Moto E 4 (mobile) • 0041072637 • android-arm • Android 7.1.1 (API 25)
 This application provides display and control of Android devices connected on USB (or over TCP/IP). It does not 
 require any root access. It works on GNU/Linux, Windows and macOS.
 
+Install:
+
 ```bash
 apt install scrcpy
+```
 
+Connect your phone with USB cable and execute
+
+```bash
 scrcpy
 ```
 
