@@ -121,7 +121,7 @@ flutter doctor
 ```javascript
 sudo apt install qemu-kvm
 sudo adduser $USER kvm
-sudo chown $USER /dev/kvm
+sudo setfacl -m u:$USER:rwx /dev/kvm
 ```
 
 ## 6. Creating Emulator and Running your Virtual Device
@@ -200,6 +200,9 @@ flutter devices
 Moto E 4 (mobile) • 0041072637 • android-arm • Android 7.1.1 (API 25)
 ```
 
+
+
+
 ## 11. Scrspy (Optional)
 
 This application provides display and control of Android devices connected on USB (or over TCP/IP). It does not 
@@ -218,3 +221,35 @@ scrcpy
 ```
 
 Click [here](https://github.com/Genymobile/scrcpy) for more info.
+
+
+## 12. Tips and Solutions
+
+1) When i started my Virtual Decive on step 6, the buttons home, back and window manager doen't works correctly. 
+So, I removed and created a new virtual device exactly the same.
+
+```bash
+emulator -list-avds
+
+android10
+```
+
+and then
+
+```bash
+avdmanager delete avd -n android10
+
+Deleting file /home/my-username/.android/avd/android10.ini
+Deleting folder /home/my-username/.android/avd/android10.avd
+
+AVD 'android10' deleted.
+```
+
+```javascript
+avdmanager create avd -n android10 -k "system-images;android-29;google_apis;x86"
+```
+```javascript
+emulator @android10
+```
+
+
