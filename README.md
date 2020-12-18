@@ -205,4 +205,10 @@ Moto E 4 (mobile) • 0041072637 • android-arm • Android 7.1.1 (API 25)
 This application provides display and control of Android devices connected on USB (or over TCP/IP). It does not 
 require any root access. It works on GNU/Linux, Windows and macOS.
 
-Clique [here](https://github.com/Genymobile/scrcpy)
+```bash
+apt install scrcpy
+
+scrcpy
+```
+
+Click [here](https://github.com/Genymobile/scrcpy) for more info.
