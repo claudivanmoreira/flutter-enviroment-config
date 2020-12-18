@@ -124,7 +124,7 @@ sudo adduser $USER kvm
 sudo chown $USER /dev/kvm
 ```
 
-## 6. Creating Emulator
+## 6. Creating Emulator and Running your Virtual Device
 
 First, download your specific image for Android Virtual Devices. In my case, i will use the Android 10
 
