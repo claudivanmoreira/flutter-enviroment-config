@@ -116,7 +116,15 @@ flutter doctor
 [!] Connected device
 ```
 
-## 5. Creating Emulator
+## 5. Setup KVM permissions
+
+```javascript
+sudo apt install qemu-kvm
+sudo adduser $USER kvm
+sudo chown $USER /dev/kvm
+```
+
+## 6. Creating Emulator
 
 First, download your specific image for Android Virtual Devices. In my case, i will use the Android 10
 
@@ -134,19 +142,18 @@ Example:
 ```javascript
 avdmanager create avd -n android10 -k "system-images;android-29;google_apis;x86"
 ```
-## 6. Setup KVM permissions
+
+Start your emulator:
 
 ```javascript
-sudo apt install qemu-kvm
-sudo adduser $USER kvm
-sudo chown $USER /dev/kvm
+emulator @android10
 ```
 
-## 6. Intall VSCode Editor
+## 7. Intall VSCode Editor
 
 Clique [here](https://code.visualstudio.com/download), download and install linux version or by Ubuntu Store
 
-## 7. Improve your VSCode Editor with extensions
+## 8. Improve your VSCode Editor with extensions
 
 - Flutter (Install full support for Flutter including Dart sintaxe highligth, autocomplete and execution)
 - Flutter Tree (Similar to emmet)
@@ -154,14 +161,14 @@ Clique [here](https://code.visualstudio.com/download), download and install linu
 - Dracula Official (Theme)
 - GitLens (Git integration)
 
-## 8. Create your Flutter Project
+## 9. Create your Flutter Project
 
 
 ```javascript
 flutter create hello-world
 ```
 
-## 9. Configure your phisical phone (Optional)
+## 10. Configure your phisical phone (Optional)
 
 You can run your flutter project directly on your physical phone as you develop.
 
@@ -193,7 +200,7 @@ flutter devices
 Moto E 4 (mobile) • 0041072637 • android-arm • Android 7.1.1 (API 25)
 ```
 
-## 8. Scrspy (Optional)
+## 11. Scrspy (Optional)
 
 This application provides display and control of Android devices connected on USB (or over TCP/IP). It does not 
 require any root access. It works on GNU/Linux, Windows and macOS.
