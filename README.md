@@ -26,7 +26,7 @@ OpenJDK Runtime Environment (build 11.0.9.1+1-Ubuntu-0ubuntu1.18.04)
 OpenJDK 64-Bit Server VM (build 11.0.9.1+1-Ubuntu-0ubuntu1.18.04, mixed mode, sharing)
 ```
 
-## 2. Intall Fluter SDK
+## 2. Intall Flutter SDK
 
 ```javascript
 sudo snap install flutter --classic
