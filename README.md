@@ -90,30 +90,63 @@ Available Packages:
   .....
 ```
 
-5. Install the tools to build and run android emulator. Using command "_sdkmanager --list_" you can get packages names to install. In my case, i installed latest version of build-tools and Android API 28 (Android 9). You can get the API level for android versions [here](https://developer.android.com/studio/releases/platforms)
+5. Install the tools to build and run android emulator. Using command "_sdkmanager --list_" you can get packages names to install. In my case, i installed latest version of build-tools and Android API 28/29 (Android 9/10). You can get the API level for android versions [here](https://developer.android.com/studio/releases/platforms)
 
 ```javascript
-sdkmanager "build-tools;28.0.3" "platforms;android-28"
+sdkmanager "build-tools;28.0.3" "platforms;android-28" "platforms;android-29"
 ```
 
-## 4. Set Android SDK home to Flutter
+
+## 4. Set Android SDK home to Flutter and Accept licenses
+
 
 ```javascript
 flutter config --android-sdk /home/claudivan-moreira/Documentos/DevZone/Tools/android-sdk
+
+flutter doctor --android-licenses
 ```
 Restart your machine and revalidate your Flutter instalation:
 
 ```javascript
 flutter doctor
 
-
+[✓] Flutter (Channel stable, 1.22.5, on Linux, locale pt_BR.UTF-8)
+[✓] Android toolchain - develop for Android devices (Android SDK version 28.0.3)
+[!] Android Studio (not installed)
+[!] Connected device
 ```
 
-## 4. Intall VSCode Editor
+## 5. Creating Emulator
+
+First, download your specific image for Android Virtual Devices. In my case, i will use the Android 10
+
+```javascript
+./sdkmanager "system-images;android-29;google_apis;x86"
+```
+
+And then, create your Virtual Device with command bellow:
+
+```javascript
+avdmanager create avd -n <device name> -k <image name>
+```
+Example:
+
+```javascript
+avdmanager create avd -n android10 -k "system-images;android-29;google_apis;x86"
+```
+## 6. Setup KVM permissions
+
+```javascript
+sudo apt install qemu-kvm
+sudo adduser $USER kvm
+sudo chown $USER /dev/kvm
+```
+
+## 6. Intall VSCode Editor
 
 Clique [here](https://code.visualstudio.com/download), download and install linux version or by Ubuntu Store
 
-## 5. Improve your VSCode Editor with extensions
+## 7. Improve your VSCode Editor with extensions
 
 - Flutter (Install full support for Flutter including Dart sintaxe highligth, autocomplete and execution)
 - Flutter Tree (Similar to emmet)
@@ -121,7 +154,14 @@ Clique [here](https://code.visualstudio.com/download), download and install linu
 - Dracula Official (Theme)
 - GitLens (Git integration)
 
-## 6. Configure your phisical phone (Optional)
+## 8. Create your Flutter Project
+
+
+```javascript
+flutter create hello-world
+```
+
+## 9. Configure your phisical phone (Optional)
 
 You can run your flutter project directly on your physical phone as you develop.
 
@@ -131,15 +171,31 @@ Validate that your device is accessible via the CLI of the flutter by running th
 
 ```bash
 flutter devices
+
+No devices detected.
+
+Run "flutter emulators" to list and start any available device emulators.
+
+If you expected your device to be detected, please run "flutter doctor" to diagnose potential issues. You may also try increasing the time to wait for connected devices with the --device-timeout flag. Visit
+https://flutter.dev/setup/ for troubleshooting tips.
+
+• Device 0041072637 is not authorized.
+_You might need to check your device for an authorization dialog._
 ```
 
-You can get more details [here](https://developer.android.com/studio/debug/dev-options)
+:rotating_light: In first time that you execute this command, an popup will be displayed in your phone. Confirm de option and re-execute the command:
 
-## 7. Scrspy (Optional)
+```bash
+flutter devices
+
+1 connected device:
+
+Moto E 4 (mobile) • 0041072637 • android-arm • Android 7.1.1 (API 25)
+```
+
+## 8. Scrspy (Optional)
 
 This application provides display and control of Android devices connected on USB (or over TCP/IP). It does not 
 require any root access. It works on GNU/Linux, Windows and macOS.
 
 Clique [here](https://github.com/Genymobile/scrcpy)
-
-## 5. Scrspy (Optional)
