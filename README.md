@@ -90,9 +90,12 @@ flutter doctor
 
 #### 4. Intall and Setup Android SDK
 
-4.1. Clique [here](https://developer.android.com/studio) and scroll to section "Command line tools only" and download the linux version
+4.1. Clique [here](https://developer.android.com/studio) and scroll to section _"Command line tools only"_ and download the linux version
+
 4.2. Create folder to extract files _mkdir -p ~/Documentos/DevZone/Tools/android/sdk/cmdline-tools/latest_
+
 4.3. Extract files from commandlinetools-linux-6858069_latest.zip/cmdline-tools to new directory
+
 4.4. Setup enviroment variables to get access to sdkmanager CLI from terminal:
 
 ```javascript
@@ -110,6 +113,7 @@ export PATH=$PATH:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$ANDROID_SDK_ROOT/t
 ```
 
 4.5. Restart your machine or logout
+
 4.6. Open terminal and download SDK packages (image and build tools) for Android Nogaut (7.1.1) using command below:
 
 ```javascript
@@ -120,9 +124,14 @@ sdkmanager "platforms;android-25" "system-images;android-25;google_apis;x86_64" 
 
 4.7. Create your Android Virtual Device
 
-avdmanager create avd -n <device name> -k <image id or name>
+```javascript
+
+avdmanager create avd -n <device name> -k <image name>
+
+```
 
 Example:
+
 
 ```javascript
 
@@ -138,13 +147,15 @@ emulator @MOTOE_NOUGAT
 
 ```
 
-To list all available images you can run the command _sdkmanager --list_ and download using step 6
-To list all available virtual devices you can run the command _avdmanager list avd_ and executing using step 8
-To delete a virtual device you can run the command _avdmanager delete avd -n <avd name> (Ex: MOTOE_NOUGAT)_ and executing using step 8
+- To list all available images you can run the command _sdkmanager --list_ and download using step 6
+- To list all available virtual devices you can run the command _avdmanager list avd_ and executing using step 8
+- To delete a virtual device you can run the command _avdmanager delete avd -n <avd name> (Ex: MOTOE_NOUGAT)_ and executing using step 8
+  
 
 #### 5. Intall VSCode Editor
 
 Clique [here](https://code.visualstudio.com/download), download and install linux version or by Ubuntu Store
+
 
 #### 6. Improve your VSCode Editor with extensions
 
@@ -166,8 +177,11 @@ flutter create hello-world
 #### 10. Run project on Emulator
 
 10.1. Open project created on step 9 in VSCode
+
 10.2. Start emulator using step 4.8
+
 10.3. In VSCode, select device to run your project
+
 
 If your VSCode not recognize the device, restart VSCode
 
