@@ -99,7 +99,7 @@ claudivan-moreira@claudivan:~$ mkdir -p ~/Documentos/DevZone/Tools/android/sdk/c
 
 ```
 
-4.3. Extract files inside folder _commandlinetools-linux-6858069_latest.zip**/cmdline-tools**_ to new directory created on step 4.2
+4.3. Extract files inside folder _commandlinetools-linux-6858069_latest.zip/cmdline-tools_ to new directory created on step 4.2
 
 4.4. Setup enviroment variables to get access to sdkmanager CLI from terminal:
 
