@@ -154,9 +154,9 @@ claudivan-moreira@claudivan:~$ emulator @MOTOE_NOUGAT
 
 ```
 
-- To list all available images you can run the command _sdkmanager --list_ and download using step 6
-- To list all available virtual devices you can run the command _avdmanager list avd_ and executing using step 8
-- To delete a virtual device you can run the command _avdmanager delete avd -n <avd name> (Ex: MOTOE_NOUGAT)_ and executing using step 8
+- To list all available images you can run the command **_sdkmanager --list_** and download using step 4.6
+- To list all available virtual devices you can run the command **_avdmanager list avd_** and executing using step 4.8
+- To delete a virtual device you can run the command **_avdmanager delete avd -n ``<avd name>`` (Ex: MOTOE_NOUGAT)_**
   
 
 #### 5. Intall VSCode Editor
