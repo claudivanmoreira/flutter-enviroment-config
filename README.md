@@ -189,6 +189,9 @@ claudivan-moreira@claudivan:~$ flutter create hello-world
 
 10.3. In VSCode, select device to run your project
 
+<p>
+  <img width="800" src="https://github.com/claudivanmoreira/flutter-enviroment-config/blob/main/selecao_avd.png?raw=true" />
+<p>
 
 If your VSCode not recognize the device, restart VSCode
 
