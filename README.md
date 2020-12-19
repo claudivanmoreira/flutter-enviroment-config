@@ -12,39 +12,37 @@
 
 1.1. Validate that you have Java installed in your machine. 
 
-```javascript
+```ruby
 
-javac --version
+claudivan-moreira@claudivan:~$ javac --version
 
-java --version
+claudivan-moreira@claudivan:~$ java --version
 
 ```
 
 1.2. If the above commands return error, then install Java
 
 
-```javascript
+```ruby
 
-sudo apt-get install openjdk-11-jre
+claudivan-moreira@claudivan:~$ sudo apt-get install openjdk-11-jre
 
-sudo apt-get install openjdk-11-jdk
+claudivan-moreira@claudivan:~$ sudo apt-get install openjdk-11-jdk
 
 ```
 
 1.3. Validate your instalations:
 
-```javascript
+```ruby
 
-javac --version
-
+claudivan-moreira@claudivan:~$ javac --version
 javac 11.0.9.1
 
 ```
 
-```javascript
+```ruby
 
-java --version
-
+claudivan-moreira@claudivan:~$ java --version
 openjdk 11.0.9.1 2020-11-04
 OpenJDK Runtime Environment (build 11.0.9.1+1-Ubuntu-0ubuntu1.18.04)
 OpenJDK 64-Bit Server VM (build 11.0.9.1+1-Ubuntu-0ubuntu1.18.04, mixed mode, sharing)
@@ -52,26 +50,26 @@ OpenJDK 64-Bit Server VM (build 11.0.9.1+1-Ubuntu-0ubuntu1.18.04, mixed mode, sh
 
 #### 2. Install KVM and Setup permissions
 
-```javascript
+```ruby
 
-sudo apt install qemu-kvm
-sudo adduser $USER kvm
-sudo setfacl -m u:$USER:rwx /dev/kvm
+claudivan-moreira@claudivan:~$ sudo apt install qemu-kvm
+claudivan-moreira@claudivan:~$ sudo adduser $USER kvm
+claudivan-moreira@claudivan:~$ sudo setfacl -m u:$USER:rwx /dev/kvm
 
 ```
 
 #### 3. Intall Flutter SDK
 
-```javascript
+```ruby
 
-sudo snap install flutter --classic
+claudivan-moreira@claudivan:~$ sudo snap install flutter --classic
 
 ```
 - Validate instalation
 
-```javascript
-flutter doctor
+```ruby
 
+claudivan-moreira@claudivan:~$ flutter doctor
 [✓] Flutter (Channel stable, 1.22.5, on Linux, locale pt_BR.UTF-8)
 [✗] Android toolchain - develop for Android devices
     ✗ Unable to locate Android SDK.
@@ -85,6 +83,7 @@ flutter doctor
 [!] Connected device
     ! No devices available
 ```
+
 :rotating_light: The above command reports that the Android SDK installation was not found. Let's install it now.
 
 
@@ -92,19 +91,27 @@ flutter doctor
 
 4.1. Clique [here](https://developer.android.com/studio) and scroll to section _"Command line tools only"_ and download the linux version
 
-4.2. Create folder to extract files _mkdir -p ~/Documentos/DevZone/Tools/android/sdk/cmdline-tools/latest_
+4.2. Create folder to extract files 
 
-4.3. Extract files from commandlinetools-linux-6858069_latest.zip/cmdline-tools to new directory
+```ruby
+
+claudivan-moreira@claudivan:~$ mkdir -p ~/Documentos/DevZone/Tools/android/sdk/cmdline-tools/latest
+
+```
+
+4.3. Extract files inside folder _commandlinetools-linux-6858069_latest.zip**/cmdline-tools**_ to new directory created on step 4.2
 
 4.4. Setup enviroment variables to get access to sdkmanager CLI from terminal:
 
-```javascript
-sudo gedit /etc/profile
+```ruby
+
+claudivan-moreira@claudivan:~$ sudo gedit /etc/profile
+
 ```
 
 and add the following content at end of file:
 
-```javascript
+```ruby
 
 export ANDROID_SDK_ROOT=~/Documentos/DevZone/Tools/android/sdk/
 export ANDROID_HOME=~/Documentos/DevZone/Tools/android/sdk
@@ -116,34 +123,34 @@ export PATH=$PATH:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$ANDROID_SDK_ROOT/t
 
 4.6. Open terminal and download SDK packages (image and build tools) for Android Nogaut (7.1.1) using command below:
 
-```javascript
+```ruby
 
-sdkmanager "platforms;android-25" "system-images;android-25;google_apis;x86_64" "build-tools;25.0.3"
+claudivan-moreira@claudivan:~$ sdkmanager "platforms;android-25" "system-images;android-25;google_apis;x86_64" "build-tools;25.0.3"
 
 ```
 
 4.7. Create your Android Virtual Device
 
-```javascript
+```ruby
 
-avdmanager create avd -n <device name> -k <image name>
+claudivan-moreira@claudivan:~$ avdmanager create avd -n <device name> -k <image name>
 
 ```
 
 Example:
 
 
-```javascript
+```ruby
 
-avdmanager create avd -n MOTOE_NOUGAT -k "system-images;android-25;google_apis;x86_64"
+claudivan-moreira@claudivan:~$ avdmanager create avd -n MOTOE_NOUGAT -k "system-images;android-25;google_apis;x86_64"
 
 ```
 
 4.8. Now, execute your virtual device:
 
-```javascript
+```ruby
 
-emulator @MOTOE_NOUGAT
+claudivan-moreira@claudivan:~$ emulator @MOTOE_NOUGAT
 
 ```
 
@@ -168,9 +175,9 @@ Clique [here](https://code.visualstudio.com/download), download and install linu
 #### 9. Create your Flutter Project
 
 
-```javascript
+```ruby
 
-flutter create hello-world
+claudivan-moreira@claudivan:~$ flutter create hello-world
 
 ```
 
@@ -194,10 +201,9 @@ To do this, enable developer mode and USB debugging. Then connect your cell phon
 
 11.1. Validate that your device is accessible via the CLI of the flutter by running the command below on the terminal:
 
-```bash
+```ruby
 
-flutter devices
-
+claudivan-moreira@claudivan:~$ flutter devices
 No devices detected.
 
 Run "flutter emulators" to list and start any available device emulators.
@@ -211,10 +217,9 @@ _You might need to check your device for an authorization dialog._
 
 11.2. In first time, when above command executed, an popup will be displayed in your phone. Confirm de option and re-execute the command:
 
-```bash
+```ruby
 
-flutter devices
-
+claudivan-moreira@claudivan:~$ flutter devices
 1 connected device:
 
 Moto E 4 (mobile) • 0041072637 • android-arm • Android 7.1.1 (API 25)
@@ -231,17 +236,17 @@ require any root access. It works on GNU/Linux, Windows and macOS.
 
 Install:
 
-```bash
+```ruby
 
-apt install scrcpy
+claudivan-moreira@claudivan:~$ apt install scrcpy
 
 ```
 
 Connect your phone with USB cable and execute
 
-```bash
+```ruby
 
-scrcpy
+claudivan-moreira@claudivan:~$ scrcpy
 
 ```
 
