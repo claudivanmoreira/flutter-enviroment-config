@@ -3,7 +3,7 @@
 </p>
 <br>
 <br>
-<h1 align="center">Enviroment configuration for Flutter Development</h1>
+<h1 align="center">Enviroment configuration for <br>Flutter Development (Linux Edition)</h1>
 <br>
 <br>
 
