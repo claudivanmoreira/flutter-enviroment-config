@@ -139,7 +139,7 @@ avdmanager create avd -n MOTOE_NOUGAT -k "system-images;android-25;google_apis;x
 
 ```
 
-4.8. Now, exeute your virtual device:
+4.8. Now, execute your virtual device:
 
 ```javascript
 
@@ -244,3 +244,16 @@ Connect your phone with USB cable and execute
 scrcpy
 
 ```
+
+### 13. Tips and Solutions
+
+**Problem 1**: Your VS Code not runing your code in Android Emulator
+
+**Solution**:
+1) Disable the Flutter extension in VS Code
+2) Restart the VS Code
+3) Activate the Flutter extension again
+
+And be happy!
+
+
